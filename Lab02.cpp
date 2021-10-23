@@ -1,5 +1,22 @@
 ﻿#include "stdafx.h"
 
+int dice_chance_compare()
+{
+    int max_count = 10000;
+    int count = 0, succ_count = 0, prev_res = -1;
+    srand(time(NULL));
+    while (count++ < max_count)
+    {
+        int dice = rand() % 6 + 1;
+        if (prev_res == dice)
+            ++succ_count;
+        prev_res = dice;
+    }
+
+    printf("Probability: %.4f%%\n", succ_count * 100.0 / count);
+    return 0;
+}
+
 int triangle_square_solver()
 {
     double a, b, c, S = 0.0;
@@ -49,6 +66,6 @@ int min_max_diff()
 
 int main()
 {
-    min_max_diff();
+    return 0;
 }
 
