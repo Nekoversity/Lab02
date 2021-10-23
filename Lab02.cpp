@@ -1,6 +1,6 @@
-﻿#include <iostream>
+﻿#include "stdafx.h"
 
-int main()
+int triangle_square_solver()
 {
     double a, b, c, S = 0.0;
     printf("Enter sides of triangle (a, b, c): ");
@@ -21,5 +21,34 @@ int main()
 
     getchar();
     return 0;
+}
+
+int min_max_diff() 
+{
+    printf("Enter a number (not a number to finish)\n");
+    int min, max, num, count = 0;
+    while (scanf("%d", &num) == 1) {
+        if (count == 0) {
+            min = max = num;
+        }
+        else
+        {
+            if (num > max) 
+                max = num;
+            else if (num < min) 
+                min = num;
+        }
+        ++count;
+    }
+
+    printf("Entered %d numbers\n", count);
+    printf("Min: %d, Max: %d, Diff: %d;", min, max, max-min);
+
+    return 0;
+}
+
+int main()
+{
+    min_max_diff();
 }
 
