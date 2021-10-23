@@ -1,5 +1,31 @@
 ﻿#include "stdafx.h"
 
+int between_rand()
+{
+    const int max_range = 1000, min_range = -1000, count = 1000;
+    int guess_num = 0, guess_res = 0;
+
+    srand(time(NULL));
+
+    printf("Enter digit between %d and %d: ", min_range, max_range);
+    if (scanf("%d", &guess_num) != 1) {
+        printf("Invalid input!");
+        return -1;
+    }
+
+    for (int i = 0; i < count;)
+    {
+        int num = rand();
+        if (!(num > max_range || num < min_range)) {
+            if (num > guess_num)
+                ++guess_res;
+            ++i;
+        }
+    }
+    printf("There were %d number more then %d!", guess_res, guess_num);
+    return 0;
+}
+
 int dice_chance_compare()
 {
     int max_count = 10000;
@@ -66,6 +92,6 @@ int min_max_diff()
 
 int main()
 {
-    return 0;
+    between_rand();
 }
 
