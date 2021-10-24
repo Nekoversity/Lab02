@@ -203,7 +203,7 @@ bool is_domino(int a, int b)
 int domino_dice()
 {
     int d1_a, d1_b, d2_a, d2_b;
-    printf("Enter values of two dominos domino (a1 b1, a2 b2): ");
+    printf("Enter values of two dominos (a1 b1, a2 b2): ");
     if (scanf("%d %d, %d %d", &d1_a, &d1_b, &d2_a, &d2_b) != 4)
     {
         printf("Invalid input\n");
