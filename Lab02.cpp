@@ -226,6 +226,30 @@ int domino_dice()
     return 0;
 }
 
+int find_nsd()
+{
+    int a, b;
+    printf("Enter numbers (a b): ");
+    if (scanf("%d %d", &a, &b) != 2)
+    {
+        printf("Invalid input\n");
+        return -1;
+    }
+
+    int nsd = 1;
+    for (int i = a; i > 0; i--)
+    {
+        if ((a % i == 0) && (b % i == 0))
+        {
+            nsd = i;
+            break;
+        }
+    }
+
+    printf("NSD equals %d\n\n", nsd);
+    return 0;
+}
+
 int main()
 {
     return 0;
