@@ -194,8 +194,39 @@ int prime_sheet()
     return 0;
 }
 
+// Check domino values
+bool is_domino(int a, int b)
+{
+    return ((a <= 6) && (a >= 0)) && ((b <= 6) && (b >= 0));
+}
+
+int domino_dice()
+{
+    int d1_a, d1_b, d2_a, d2_b;
+    printf("Enter values of two dominos domino (a1 b1, a2 b2): ");
+    if (scanf("%d %d, %d %d", &d1_a, &d1_b, &d2_a, &d2_b) != 4)
+    {
+        printf("Invalid input\n");
+        return -1;
+    }
+
+    if (!(is_domino(d1_a, d1_b) && is_domino(d2_a, d2_b)))
+    {
+        printf("Invalid domino values\n\n");
+        return -1;
+    }
+
+    bool lining_possible = d1_a == d2_a ? true : (d1_a == d2_b ? true : (d1_b == d2_a ? true : (d1_b == d2_b ? true : false)));
+    
+    if (lining_possible) 
+        printf("Given dominos can be joined!\n\n");
+    else 
+        printf("Given dominos can`t be joined.\n\n");
+
+    return 0;
+}
+
 int main()
 {
     return 0;
 }
-
