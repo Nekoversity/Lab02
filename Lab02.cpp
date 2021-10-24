@@ -141,6 +141,59 @@ int triple_min_max()
     return 0;
 }
 
+int prime_sheet()
+{
+    int num;
+    printf("Enter number: ");
+    if (scanf("%d", &num) != 1)
+    {
+        printf("Invalid input\n\n");
+        return -1;
+    }
+
+    if (num < 2)
+    {
+        printf("Wrong num (less than first primary)\n\n");
+        return -1;
+    }
+
+    if (num == 2) {
+        printf("Number %d is primary\n\n", num);
+        return 0;
+    }
+
+    int step = 2;
+    bool step_decided = false;
+    int next_step = 2;
+    bool num_exist = true;
+    for (int i = 2; i <= num; i++) {
+        for (int j = step; j <= num; j++)
+        {
+            if ((j % step != 0) && !step_decided)
+            {
+                next_step = j;
+                step_decided = true;
+            }
+            
+            if (j % step == 0 && j != step)
+            {
+                num_exist = !(j == num);
+            }
+        }
+        step_decided = false;
+        step = next_step;
+        if (!num_exist) break;
+    }
+
+    if (num_exist) {
+        printf("Number %d is primary\n\n", num);
+        return 0;
+    }
+
+    printf("Number %d is not primary\n\n", num);
+    return 0;
+}
+
 int main()
 {
     return 0;
