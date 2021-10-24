@@ -124,10 +124,25 @@ int circles_entry()
     return 0;
 }
 
+int triple_min_max()
+{
+    int a, b, c;
+    printf("Enter 3 numbers (a b c): ");
+    if (scanf("%d %d %d", &a, &b, &c) != 3)
+    {
+        printf("Invalid input\n");
+        return -1;
+    }
+
+    int min = a < b ? (a < c ? a : c) : (b < c ? b : c);
+    int max = a > b ? (a > c ? a : c) : (b > c ? b : c);
+
+    printf("Given (a=%d, b=%d, c=%d); Min: %d; Max: %d\n\n", a, b, c, min, max);
+    return 0;
+}
+
 int main()
 {
-    circles_entry();
-    circles_entry();
-    circles_entry();
+    return 0;
 }
 
