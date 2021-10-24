@@ -90,8 +90,44 @@ int min_max_diff()
     return 0;
 }
 
+int circles_entry()
+{
+    // Ми маємо два кола, нехай A і B. Ми знаємо координати їх центрів (cx, cy) та радіус (r), що в обох випадках дорівнює 1
+    double r_A  =  1.0, r_B  = 1.0;
+    double cx_A =  0.0, cy_A = 0.0;
+    double cx_B = -1.0, cy_B = 0.0;
+
+    // Отримаємо координати точки М
+    double x_M, y_M;
+    printf("Enter M coordinates (x, y): ");
+    if (scanf("%lf, %lf", &x_M, &y_M) != 2)
+    {
+        printf("Invalid input\n");
+        return -1;
+    }
+    
+    // Перевіримо точку на входження до кожного кола, якщо точка належить обом колам, тоді вона належить і перетину даних кіл
+    bool entry_A, entry_B = false;
+
+    // Перевіряємо на входження до кіл за допомогою рівняння кола (x - a)^2 + (y - b)^2 = R^2, де a і b є координатами центру кола, а 
+    // x, y координатами точки. В нашому випадку точка буде входити до кола за таким рівнянням (x - a)^2 + (y - b)^2 <= R^2
+    entry_A = pow((x_M - cx_A), 2) + pow((y_M - cy_A), 2) <= pow(r_A, 2);
+    entry_B = pow((x_M - cx_B), 2) + pow((y_M - cy_B), 2) <= pow(r_B, 2);
+
+    if (entry_A && entry_B)
+    {
+        printf("Point M(%.1f, %.1f) is included in the intersection of circles\n\n", x_M, y_M);
+        return 0;
+    }
+
+    printf("Point M(%.1f, %.1f) is not included in the intersection of circles\n\n", x_M, y_M);
+    return 0;
+}
+
 int main()
 {
-    between_rand();
+    circles_entry();
+    circles_entry();
+    circles_entry();
 }
 
