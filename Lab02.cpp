@@ -183,7 +183,54 @@ int triangle_types()
     return 0;
 }
 
+double triangle_area(int a_x, int a_y, int b_x, int b_y, int c_x, int c_y)
+{
+    return 0.5 * abs((b_x - a_x) * (c_y - a_y) - (c_x - a_x) * (b_y - a_y));
+}
+
+int point_in_triangle()
+{
+    int a_x, a_y, b_x, b_y, c_x, c_y, p_x, p_y;
+    int a_input, b_input, c_input, p_input;
+
+    printf("Enter A coodinates (x y): ");
+    a_input = scanf("%d %d", &a_x, &a_y);
+    
+    printf("Enter B coodinates (x y): ");
+    b_input = scanf("%d %d", &b_x, &b_y);
+
+    printf("Enter C coodinates (x y): ");
+    c_input = scanf("%d %d", &c_x, &c_y);
+
+    printf("Enter M coodinates (x y): ");
+    p_input = scanf("%d %d", &p_x, &p_y);
+
+    if (!(a_input == 2 && b_input == 2 && c_input == 2 && p_input == 2))
+    {
+        printf("Invalid input\n\n");
+        return -1;
+    }
+
+    // Створимо нові трикутники, що складатимуться с 2-х вершин та точки. Якщо площі трьох таких 
+    // підтрикутників будуть в сумі дорівнювати площі початкового трикутника, то точка знаходиться всередині
+    double abc, abp, acp, bcp;
+    abc = triangle_area(a_x, a_y, b_x, b_y, c_x, c_y);
+    abp = triangle_area(a_x, a_y, b_x, b_y, p_x, p_y);
+    acp = triangle_area(a_x, a_y, c_x, c_y, p_x, p_y);
+    bcp = triangle_area(b_x, b_y, c_x, c_y, p_x, p_y);
+
+    if (abc != (abp + acp + bcp)) 
+        printf("Point M(%d, %d) placed ouside of ABC triangle\n\n", p_x, p_y);
+    else
+        printf("Point M(%d, %d) placed inside ABC triangle\n\n", p_x, p_y);
+    
+    return 0;
+}
+
 int main()
 {
-    return 0;
+    point_in_triangle();
+    point_in_triangle();
+    point_in_triangle();
+    point_in_triangle();
 }
