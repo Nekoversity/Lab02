@@ -305,6 +305,28 @@ int console_menu()
     }
 }
 
+int factorial_solver()
+{
+    int n;
+    printf("Enter number: ");
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input\n\n");
+        return -1;
+    }
+
+    unsigned long long int f = 1L;
+
+    for (int i = n; i > 0; i--)
+    {
+        f *= i;
+    }
+
+    printf("!%d = %lld\n\n", n, f);
+    
+    return 0;
+}
+
 int main()
 {
     return 0;
