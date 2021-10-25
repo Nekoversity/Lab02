@@ -250,6 +250,29 @@ int find_nsd()
     return 0;
 }
 
+int triangle_types()
+{
+    // Правильне відображення українських літер
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    int a, b, c;
+    printf("Введіть сторони трикутника (a b c): ");
+    if (scanf("%d %d %d", &a, &b, &c) != 3)
+    {
+        printf("Сторони не вірні\n\n");
+        return -1;
+    }
+
+    if (a == b == c)
+        printf("Сторони належать рівносторонньому трикутнику\n\n");
+    else if (a == b || a == c || b == c) 
+        printf("Сторони належать рівнобедренному трикутнику\n\n");
+    else 
+        printf("Сторони належать різносторонньому трикутнику\n\n");
+
+    return 0;
+}
+
 int main()
 {
     return 0;
