@@ -227,10 +227,85 @@ int point_in_triangle()
     return 0;
 }
 
+int console_menu()
+{
+    // Правильне відображення українських літер
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    char p = '0';
+
+    while (true)
+    {
+        switch (p)
+        {
+        case '0':
+            system("CLS");
+            printf(
+                "Лабораторна робота №2 Варіант №14\n" \
+                "Студент Єфремов Андрій Віталійович\n" \
+                "[1] Обчислити суму ряду\n" \
+                "[2] Обчислити точне значення функції\n" \
+                "[3] Обчислити похибку у точці\n" \
+                "[4] Протабулювати функцію однієї змінної\n" \
+                "[5] Протабулювати функцію двох змінних\n" \
+                "[Q/q] Вийти з програми\n" \
+                "[H/h] Допомога\n\n" \
+                "::: "
+            );
+            break;
+        case '1':
+            system("CLS");
+            printf(
+                "First func \n\n" \
+                "::: "
+            );
+            break;
+        case '2':
+            system("CLS");
+            printf(
+                "Second func \n\n" \
+                "::: "
+            );
+            break;
+        case '3':
+            system("CLS");
+            printf(
+                "Third func \n\n" \
+                "::: "
+            );
+            break;
+        case '4':
+            system("CLS");
+            printf(
+                "Fourth func \n\n" \
+                "::: "
+            );
+            break;
+        case 'q':
+        case 'Q':
+            system("CLS");
+            printf("Закриття програми...");
+            exit(0);
+        case 'h':
+        case 'H':
+            system("CLS");
+            printf(
+                "Допоміжна інформація...\n\n" \
+                "::: "
+            );
+            break;
+        }
+
+        if (scanf("%c", &p) != 1)
+        {
+            printf("Invalid input\n\n");
+            return 0;
+        }
+    }
+}
+
 int main()
 {
-    point_in_triangle();
-    point_in_triangle();
-    point_in_triangle();
-    point_in_triangle();
+    return 0;
 }
