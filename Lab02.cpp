@@ -1,10 +1,26 @@
 ﻿#include "stdafx.h"
 
+#define FUNC(x) 2*log(cos(x))
+#define Q(x, n) -((pow(sin(x), 2)*n)/(n+1))
+
+int row_solve()
+{
+    double x = 1.5, S = 0.0, a = 1.0;
+    unsigned int n, N = 10;
+    for (n = 0; n < N; ++n) {
+        S += a;
+        a *= Q(x, n);
+    }
+    double y = FUNC(x), tol = fabs(S - y);
+    printf("Sum:\t\t%.7f\nControl:\t%.7f\nTolerance:\t%.7f\n", S, y, tol);
+    return 0;
+}
+
 int circles_entry()
 {
     // Ми маємо два кола, нехай A і B. Ми знаємо координати їх центрів (cx, cy) та радіус (r), що в обох випадках дорівнює 1
-    double r_A  =  1.0, r_B  = 1.0;
-    double cx_A =  0.0, cy_A = 0.0;
+    double r_A = 1.0, r_B = 1.0;
+    double cx_A = 0.0, cy_A = 0.0;
     double cx_B = -1.0, cy_B = 0.0;
 
     // Отримаємо координати точки М
@@ -15,7 +31,7 @@ int circles_entry()
         printf("Invalid input\n");
         return -1;
     }
-    
+
     // Перевіримо точку на входження до кожного кола, якщо точка належить обом колам, тоді вона належить і перетину даних кіл
     bool entry_A, entry_B = false;
 
@@ -84,7 +100,7 @@ int prime_sheet()
                 next_step = j;
                 step_decided = true;
             }
-            
+
             if (j % step == 0 && j != step)
             {
                 num_exist = !(j == num);
@@ -127,10 +143,10 @@ int domino_dice()
     }
 
     bool lining_possible = d1_a == d2_a ? true : (d1_a == d2_b ? true : (d1_b == d2_a ? true : (d1_b == d2_b ? true : false)));
-    
-    if (lining_possible) 
+
+    if (lining_possible)
         printf("Given dominos can be joined!\n\n");
-    else 
+    else
         printf("Given dominos can`t be joined.\n\n");
 
     return 0;
@@ -175,9 +191,9 @@ int triangle_types()
 
     if (a == b == c)
         printf("Сторони належать рівносторонньому трикутнику\n\n");
-    else if (a == b || a == c || b == c) 
+    else if (a == b || a == c || b == c)
         printf("Сторони належать рівнобедренному трикутнику\n\n");
-    else 
+    else
         printf("Сторони належать різносторонньому трикутнику\n\n");
 
     return 0;
@@ -195,7 +211,7 @@ int point_in_triangle()
 
     printf("Enter A coodinates (x y): ");
     a_input = scanf("%d %d", &a_x, &a_y);
-    
+
     printf("Enter B coodinates (x y): ");
     b_input = scanf("%d %d", &b_x, &b_y);
 
@@ -219,11 +235,11 @@ int point_in_triangle()
     acp = triangle_area(a_x, a_y, c_x, c_y, p_x, p_y);
     bcp = triangle_area(b_x, b_y, c_x, c_y, p_x, p_y);
 
-    if (abc != (abp + acp + bcp)) 
+    if (abc != (abp + acp + bcp))
         printf("Point M(%d, %d) placed ouside of ABC triangle\n\n", p_x, p_y);
     else
         printf("Point M(%d, %d) placed inside ABC triangle\n\n", p_x, p_y);
-    
+
     return 0;
 }
 
@@ -323,11 +339,11 @@ int factorial_solver()
     }
 
     printf("!%d = %lld\n\n", n, f);
-    
+
     return 0;
 }
 
 int main()
 {
-    return 0;
+    row_solve();
 }
